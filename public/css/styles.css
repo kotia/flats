@@ -1,0 +1,12 @@
+.error {
+    display: none;
+    color: red;
+}
+
+.answer {
+    color: green;
+    display: none;
+}
+.answer .price {
+    font-weight: bold;
+}

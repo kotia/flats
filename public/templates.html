@@ -1,0 +1,83 @@
+<script id="flatForm" class="partial" type="text/html">
+        <tr>
+            <td>
+                район:
+            </td>
+            <td>
+                <select name="district">
+                    <option selected value="1.98">голосеевский</option>
+                    <option value="1.58">дарницкий</option>
+                    <option value="1.32">деснянский</option>
+                    <option value="1.69">днепровский</option>
+                    <option value="2.25">оболонский</option>
+                    <option value="3.28">печерский</option>
+                    <option value="2.30">подольский</option>
+                    <option value="1.56">святошинский</option>
+                    <option value="1.52">соломенский</option>
+                    <option value="2.64">шевченковский</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                площадь квартиры:
+            </td>
+            <td>
+                <input type="text" name="area" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                количество комнат:
+            </td>
+            <td>
+                <input type="text" name="rooms" />
+            </td>
+        </tr>
+</script>
+
+<script id="addPriceInput" class="partial" type="text/html">
+    <tr>
+        <td>
+            цена:
+        </td>
+        <td>
+            <input type="text" name="price" />
+        </td>
+    </tr>
+</script>
+
+<script id="searchFlatForm" class="partial" type="text/html">
+    <form class="search-container">
+        <table border="0">
+            {{>flatForm}}
+        </table>
+        <span class="error">Что-то не заполнено!</span>
+        <div class="answer">Приблизительная стоимость квартиры:&nbsp;<span class="price"></span>&nbsp; гривен</div>
+    </form>
+</script>
+
+<script id="addFlatForm" class="partial" type="text/html">
+    <form class="add-container">
+        <table border="0">
+            {{>flatForm}}
+            {{>addPriceInput}}
+        </table>
+        <span class="error">Что-то не заполнено!</span>
+    </form>
+</script>
+
+<script id="mainTmpl" type="text/html">
+    <h2>Добавить квартиру в БД</h2>
+        {{>addFlatForm}}
+        <button class="addFlat">Добавить</button>
+    {{#length}}
+    <h2>Вычислить приблизительную стоимость квартиры</h2>
+        {{>searchFlatForm}}
+        <button class="countFlat">Посчитать</button>
+    {{/length}}
+    {{^length}}
+    <h3>Извините, квартир в базе меньше пяти. Добавьте немного</h3>
+    {{/length}}
+    <button class="reload">reload</button>
+</script>
